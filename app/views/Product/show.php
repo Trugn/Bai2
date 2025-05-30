@@ -4,13 +4,13 @@
     .product-detail-card {
         border-radius: 1rem;
         overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.07);
     }
 
     .product-image-container {
-        background-color: #f9f9f9;
+        background-color: #fdfdfd;
         border-right: 1px solid #eee;
-        padding: 1rem;
+        padding: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -18,38 +18,59 @@
     }
 
     .product-image {
-        max-height: 380px;
+        max-height: 400px;
         object-fit: contain;
         width: 100%;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .product-name {
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: 700;
-        color: #333;
+        color: #222;
     }
 
     .product-description {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         color: #555;
+        line-height: 1.7;
     }
 
     .product-price {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         color: #e74c3c;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .badge-category {
-        background-color: #0dcaf0;
+        background: linear-gradient(135deg, #0dcaf0, #67e8f9);
         color: #fff;
-        padding: 0.35em 0.75em;
-        border-radius: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.45em 0.9em;
+        border-radius: 0.75rem;
+        font-size: 0.95rem;
     }
 
     .btn-action {
-        min-width: 160px;
+        min-width: 180px;
+        border-radius: 0.65rem;
+        padding: 0.65rem 1.2rem;
+        font-size: 1.05rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-action:hover {
+        opacity: 0.92;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .card-header-detail {
+        background: linear-gradient(135deg, #007bff, #4facfe);
+        color: #fff;
+        text-align: center;
+        padding: 1.2rem;
     }
 
     @media (max-width: 768px) {
@@ -61,7 +82,7 @@
 
 <div class="container my-5">
     <div class="card product-detail-card">
-        <div class="card-header bg-primary text-white text-center py-3">
+        <div class="card-header card-header-detail">
             <h2 class="mb-0"><i class="fas fa-box-open me-2"></i>Chi tiết sản phẩm</h2>
         </div>
         <div class="card-body p-4">
@@ -84,7 +105,7 @@
                             <?php echo nl2br(htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8')); ?>
                         </p>
                         <p class="product-price mb-3">
-                            💰 <?php echo number_format($product->price, 0, ',', '.'); ?> VND
+                            <i class="fas fa-tags me-2"></i> <?php echo number_format($product->price, 0, ',', '.'); ?> VND
                         </p>
                         <p class="mb-4">
                             <strong>Danh mục:</strong>
@@ -93,12 +114,12 @@
                                     htmlspecialchars($product->category_name, ENT_QUOTES, 'UTF-8') : 'Chưa có danh mục'; ?>
                             </span>
                         </p>
-                        <div class="d-flex flex-wrap gap-2 mt-4">
+                        <div class="d-flex flex-wrap gap-3 mt-4">
                             <a href="/webbanhang/Product/addToCart/<?php echo $product->id; ?>" 
                                class="btn btn-success btn-action">
                                 ➕ Thêm vào giỏ hàng
                             </a>
-                            <a href="/webbanhang/Product/list" 
+                            <a href="/webbanhang/Product/" 
                                class="btn btn-outline-secondary btn-action">
                                 ⬅️ Quay lại danh sách
                             </a>

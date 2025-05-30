@@ -88,7 +88,7 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-4">
-                <a href="/webbanhang/Product/list" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold">
+                <a href="/webbanhang/Product/admin" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold">
                     <i class="fas fa-arrow-left me-1"></i> Quay lại
                 </a>
                 <button type="submit" class="btn btn-success px-4 py-2 rounded-3 fw-semibold shadow">
