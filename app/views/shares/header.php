@@ -10,34 +10,28 @@ body {
     background-color: #fdfdfd;
     color: #212529;
 }
-
 .navbar {
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
-
 .navbar-brand {
     color: #212529;
     font-size: 1.5rem;
     font-weight: 700;
 }
-
 .navbar-brand i {
     font-size: 1.6rem;
     color: #26c6da;
 }
-
 .nav-link {
     color: #212529;
     font-weight: 500;
     transition: all 0.3s ease;
 }
-
 .nav-link:hover {
     color: #ff7043 !important;
     transform: translateY(-1px);
 }
-
 .badge {
     background: #26c6da;
     font-size: 0.75rem;
@@ -45,74 +39,15 @@ body {
     color: #fff;
     box-shadow: 0 0 5px rgba(255, 111, 145, 0.4);
 }
-
-.card {
-    border: 1px solid #e0e0e0;
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    transform: translateY(-3px);
-}
-
-.card-title a {
-    color: #212529;
-    transition: color 0.3s ease;
-}
-
-.card-title a:hover {
-    color: #26c6da;
-}
-
-.btn-primary {
-    background-color: #26c6da;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #1cb5c9;
-}
-
-.btn-outline-warning {
-    border-color: #ff7043;
-    color: #ff7043;
-}
-
-.btn-outline-warning:hover {
-    background-color: #ff7043;
-    color: #fff;
-}
-
-.btn-outline-danger {
-    border-color: #f44336;
-    color: #f44336;
-}
-
-.btn-outline-danger:hover {
-    background-color: #f44336;
-    color: #fff;
-}
-
-.img-hover {
-    transition: transform 0.35s ease;
-}
-
-.img-hover:hover {
-    transform: scale(1.05);
-}
-
 .navbar-toggler {
     border: none;
 }
-
 .navbar-toggler:focus {
     box-shadow: none;
 }
-
 </style>
 
+<?php require_once 'app/helpers/SessionHelper.php'; ?>
 
 <nav class="navbar navbar-expand-lg shadow-sm py-3">
     <div class="container">
@@ -126,11 +61,15 @@ body {
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center gap-3">
+
+                <?php if (SessionHelper::isAdmin()) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/webbanhang/Product/admin">
                         <i class="bi bi-box-seam me-1"></i>Danh sách sản phẩm
                     </a>
                 </li>
+                <?php } ?>
+
                 <li class="nav-item position-relative">
                     <a class="nav-link d-flex align-items-center" href="/webbanhang/Product/Cart">
                         <i class="bi bi-cart4 me-1"></i>Giỏ hàng
@@ -139,6 +78,25 @@ body {
                         </span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <?php 
+                    if (SessionHelper::isLoggedIn()) {
+                        echo "<a class='nav-link'><i class='bi bi-person-circle me-1'></i>" . $_SESSION['username'] . "</a>";
+                    } else {
+                        echo "<a class='nav-link' href='/webbanhang/account/login'><i class='bi bi-box-arrow-in-right me-1'></i>Đăng nhập</a>";
+                    }
+                    ?>
+                </li>
+
+                <?php if (SessionHelper::isLoggedIn()) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webbanhang/account/logout">
+                        <i class="bi bi-box-arrow-right me-1"></i>Đăng xuất
+                    </a>
+                </li>
+                <?php } ?>
+
             </ul>
         </div>
     </div>
